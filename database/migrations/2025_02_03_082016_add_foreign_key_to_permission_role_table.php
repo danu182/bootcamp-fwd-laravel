@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('permission_role', function (Blueprint $table) {
-           
+            
+            $table->foreign('permission_id','fk_permission_to_permission_role')->references('id')->on('permission_role')->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('role_id','fk_role_id_to_role')->references('id')->on('role')->onUpdate('cascade')->onDelete('cascade');
            
         });
     }
@@ -23,7 +26,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('permission_role', function (Blueprint $table) {
-           
+            $table->dropForeign('fk_permission_to_permission_role');
+            $table->dropForeign('fk_role_id_to_role');
         });
     }
 };
