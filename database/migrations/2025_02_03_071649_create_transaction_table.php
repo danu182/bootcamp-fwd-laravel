@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('fee_specialist');
             $table->string('fee_hospital');
             $table->string('subtotal');
-            $table->string('vet');
+            $table->string('vat');
             $table->string('total');
 
             $table->timestamps();
