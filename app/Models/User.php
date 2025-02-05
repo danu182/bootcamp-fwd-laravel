@@ -3,7 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\ManagementAccess\DetailUser;
+use App\Models\ManagementAccess\RoleUser;
+use App\Models\Operational\Appointment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -16,6 +21,7 @@ class User extends Authenticatable
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
+    use SoftDeletes;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -64,4 +70,27 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class, 'user_id', 'local_key');
+    }
+
+    public function detailUser()
+    {
+        return $this->hasOne(DetailUser::class, 'user_id', 'id');
+    }
+
+    public function role_user()
+    {
+        return $this->hasMany(RoleUser::class, 'user_id', 'id');
+    }
+
+
+    
+
+
+
 }
