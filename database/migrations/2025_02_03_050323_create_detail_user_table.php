@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('detail_user', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id');
-            $table->bigInteger('type_user_id');
+            $table->foreignId('user_id')->nullable()->index('fk_detail_user_to_users');
+            $table->foreignId('type_user_id')->nullable()->index('fk_detail_user_to_type_user');
             $table->string('contact')->nullable();
             $table->longText('address')->nullable();
             $table->longText('photo')->nullable();
