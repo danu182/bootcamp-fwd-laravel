@@ -28,4 +28,13 @@ class Permission extends Model
     ];
 
 
+    /**
+     * Get all of the comments for the Permission
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function permission_role()
+    {
+        return $this->hasMany(PermissionRole::class, 'permission_id', 'id');
+    }
 }
