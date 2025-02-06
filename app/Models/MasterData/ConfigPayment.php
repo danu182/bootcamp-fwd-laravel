@@ -17,7 +17,7 @@ class ConfigPayment extends Model
     protected $dates=[
         'created_at',
         'updated_at',
-        'deleted_at',
+        'deleted_at', 
     ];
 
     // kolom atau filed tabel yang bisa di isi
