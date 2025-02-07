@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\ConfidPayment;
+namespace App\Http\Requests\ConfigPayment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
