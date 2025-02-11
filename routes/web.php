@@ -10,28 +10,39 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+Route::resource('/', LandingController::class );
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
+Route::group(['middleware'=>['auth:sanctum','verified']], function(){
+    // return view('dashboard');
+
+    // appointmnt page
+    Route::resource('appointment', AppointmentController::class);
+    
+    // payment page
+    Route::resource('payment', PaymentController::class);
+
+
 });
 
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     // Route::get('/dashboard', function () {
+//     //     return view('dashboard');
+//     // })->name('dashboard');
 
-Route::resource('/', LandingController::class );
+    
+// });
+
+
 
 Route::group(['prefix'=>'backsite', 'as'=>'backsite.','middleware'=>['auth:sanctum','verified']], function(){
     // return view('dashboard');
 
-    // payment page
-    Route::resource('payment', PaymentController::class);
-    
-    // appointment page
-    Route::resource('appointment', AppointmentController::class);
+    return view('dashboard');
 
 
 });
