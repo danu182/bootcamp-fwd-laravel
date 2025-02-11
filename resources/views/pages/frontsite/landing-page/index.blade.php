@@ -8,24 +8,21 @@
 
       <!-- Hero -->
       <section class="relative mt-12">
-        <!-- Hero Image -->
+        <!-- Hero Image statr-->
         <div
           class="hidden lg:block lg:absolute lg:z-10 lg:top-0 lg:right-0"
           aria-hidden="true"
         >
-          <img
-            src="{{ asset('assets/frontsite/images/hero-image.png') }}"
+          <img src="{{ asset('assets/frontsite/images/hero-image.png') }}"
             class="bg-cover bg-center object-cover object-center max-h-[580px]"
-            alt="Hero Image"
-          />
-          <div
-            class="text-center absolute bottom-0 -left-20 -translate-y-14 bg-white px-7 py-5 rounded-xl shadow-2xl"
-          >
+            alt="Hero Image"/>
+          <div class="text-center absolute bottom-0 -left-20 -translate-y-14 bg-white px-7 py-5 rounded-xl shadow-2xl">
             <h5 class="font-medium text-[#1E2B4F]">Dr. Kartika Me</h5>
             <p class="text-xs text-[#AFAEC3] mt-1">Nutrionist</h1>
             <span class="block text-xs text-[#1E2B4F] font-medium bg-[#F2F6FE] px-4 py-2 rounded-full text-center mt-7">Book Now</span>
           </div>
         </div>
+        <!-- Hero Image end-->
 
         <!-- Hero Description -->
         <div class="relative mx-auto max-w-7xl px-4 lg:px-14 lg:py-16">
@@ -157,7 +154,7 @@
 
           <!-- Card -->
           <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 lg:gap-10 mt-10">
-            <a href="src/pages/subject-consultation.html" class="group">
+            <a href="{{ route('appointment.index') }}" class="group">
               <div class="relative z-10 w-full h-[350px] rounded-2xl overflow-hidden">
                 <img src="{{ asset('assets/frontsite/images/doctor-1.png') }}" class="w-full h-full bg-center bg-no-repeat object-cover object-center" alt="Doctor 1">
                 <div class="opacity-0 group-hover:opacity-100 transition-all ease-in absolute inset-0 bg-[#0D63F3] bg-opacity-70 flex justify-center items-center">
