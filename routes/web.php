@@ -5,8 +5,23 @@ use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
 use Illuminate\Support\Facades\Route;
 
+// route default laravel 
 // Route::get('/', function () {
 //     return view('welcome');
+// });
+
+
+// route default dari laravel jetsreem
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     // Route::get('/dashboard', function () {
+//     //     return view('dashboard');
+//     // })->name('dashboard');
+
+    
 // });
 
 
@@ -25,17 +40,7 @@ Route::group(['middleware'=>['auth:sanctum','verified']], function(){
 
 });
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     // Route::get('/dashboard', function () {
-//     //     return view('dashboard');
-//     // })->name('dashboard');
 
-    
-// });
 
 
 
