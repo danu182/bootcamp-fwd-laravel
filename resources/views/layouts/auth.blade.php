@@ -17,7 +17,7 @@
     </head>
         <body>
             {{-- include header start --}}
-            @include('components.frontsite.header')
+            {{-- @include('components.frontsite.header') --}}
             {{-- include header end --}}
 
 
@@ -26,7 +26,7 @@
             {{-- content end --}}
 
             {{-- include footer start --}}
-            @include('components.frontsite.footer')
+            {{-- @include('components.frontsite.footer') --}}
             {{-- include footer end --}}
 
             @stack('before-script')

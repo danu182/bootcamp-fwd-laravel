@@ -3,13 +3,11 @@
 @section('title', 'Login')
     
 @section('content')
-    <x-guest-layout>
-   
+
     <div class="min-h-screen">
       <div class="grid lg:grid-cols-2">
         <!-- Form-->
         <div class="px-4 lg:px-[91px] pt-10">
-
           <!-- Logo Brand -->
           <a
             href="../../index.html"
@@ -17,7 +15,7 @@
           >
             <img
               class="h-12 lg:h-16"
-              src="{{ asset('assets/frontsite/images/logo.png') }}"
+              src="/src/assets/images/logo.png"
               alt="Meet Doctor Logo"
             />
           </a>
@@ -30,7 +28,6 @@
               Health With Expert
             </h2>
             <div class="mt-12">
-
               <!-- Form input -->
               <form action="" class="grid gap-6">
                 <label class="block">
@@ -48,9 +45,10 @@
                     placeholder="Password"
                   />
                 </label>
-                
+
                 <div class="mt-10 grid gap-6">
-                  <a href="authenticated.html"
+                  <a
+                    href="authenticated.html"
                     class="text-center text-white text-lg font-medium bg-[#0D63F3] px-10 py-4 rounded-full"
                   >
                     Sign In
@@ -63,7 +61,6 @@
                   </a>
                 </div>
               </form>
-
             </div>
           </div>
         </div>
@@ -75,7 +72,7 @@
             <div class="relative">
               <div class="relative top-0 -left-5 mb-7">
                 <img
-                  src="{{ asset('assets/frontsite/images/blockqoutation.svg') }}"
+                  src="/src/assets/images/blockqoutation.svg"
                   class="h-[30px]"
                   alt=""
                 />
@@ -90,7 +87,7 @@
                   <div class="ring-1 ring-[#0D63F3] ring-offset-4 rounded-full">
                     <img
                       class="inline-block h-14 w-14 rounded-full"
-                      src="{{ asset('assets/frontsite/images/patient-testimonial.png') }}"
+                      src="/src/assets/images/patient-testimonial.png"
                       alt=""
                     />
                   </div>
@@ -106,8 +103,6 @@
         <!-- End Qoute -->
       </div>
     </div>
-
-</x-guest-layout>
-
+    
 @endsection
 
