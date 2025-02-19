@@ -15,7 +15,7 @@
           >
             <img
               class="h-12 lg:h-16"
-              src="/src/assets/images/logo.png"
+              src="{{ asset('assets/frontsite/images/logo.png') }}"
               alt="Meet Doctor Logo"
             />
           </a>
@@ -29,13 +29,20 @@
             </h2>
             <div class="mt-12">
               <!-- Form input -->
-              <form action="" class="grid gap-6">
-                <label class="block">
+              <form method="POST" action="{{ route('login') }}">
+              @csrf
+              
+              <label class="block">
                   <input
                     type="email"
                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                     placeholder="Email Address"
+                    required autofocus autocomplete="email" name='email' value="{{ old('email') }}"
                   />
+                  @if ($errors->has('email'))
+                  <span class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }} </span>
+                  @endif
+
                 </label>
 
                 <label class="block">
@@ -43,16 +50,27 @@
                     type="password"
                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                     placeholder="Password"
+                    type="password" name="password" required autocomplete="current-password"
                   />
+                  @if ($errors->has('password'))
+                  <span class="text-red-500 mb-3 text-sm">{{ $errors-Sfirst('password') }}</span>
+                      
+                  @endif
+                  {{-- @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif --}}
+
                 </label>
 
                 <div class="mt-10 grid gap-6">
-                  <a
-                    href="authenticated.html"
+                  
+                  <button
                     class="text-center text-white text-lg font-medium bg-[#0D63F3] px-10 py-4 rounded-full"
                   >
-                    Sign In
-                  </a>
+                    Sign In wdsad
+                  </button>
                   <a
                     href="sign-up.html"
                     class="text-center text-lg text-[#1E2B4F] font-medium bg-[#F2F6FE] px-10 py-4 rounded-full"
@@ -72,7 +90,7 @@
             <div class="relative">
               <div class="relative top-0 -left-5 mb-7">
                 <img
-                  src="/src/assets/images/blockqoutation.svg"
+                  src="{{ asset('assets/frontsite/images/blockqoutation.svg') }}"
                   class="h-[30px]"
                   alt=""
                 />
@@ -87,7 +105,7 @@
                   <div class="ring-1 ring-[#0D63F3] ring-offset-4 rounded-full">
                     <img
                       class="inline-block h-14 w-14 rounded-full"
-                      src="/src/assets/images/patient-testimonial.png"
+                      src="{{ asset('assets/frontsite/images/patient-testimonial.png') }}"
                       alt=""
                     />
                   </div>

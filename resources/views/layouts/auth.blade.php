@@ -3,7 +3,7 @@
     <head>
 
     {{-- include meta star --}}
-    @include('include.backsite.meta')
+    @include('include.frontsite.meta')
     {{-- include meta end --}}
     <title>@yield('title') | MeetDocters</title>
     
