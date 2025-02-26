@@ -20,10 +20,9 @@
               alt="Meet Doctor Logo"
             />
           </a>
+          <h1>asdasd</h1>
 
-          <div
-            class="flex flex-col justify-center py-14 h-full lg:min-h-screen"
-          >
+          <div class="flex flex-col justify-center py-14 h-full lg:min-h-screen">
             <h2 class="text-[#1E2B4F] text-4xl font-semibold leading-normal">
               Improve Your <br />
               Health With Expert
@@ -31,53 +30,61 @@
             <div class="mt-12">
 
               <!-- Form input -->
-              <form action="" class="grid gap-6">
-                <label class="block">
-                  <input
-                    type="text"
-                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                    placeholder="Complete Name"
-                  />
-                </label>
+              
+                 <form method="POST" action="{{ route('register') }}">
+            @csrf
+            
+            <div>
+                <x-label for="name" value="{{ __('Name') }}" />
+                <x-input id="name" class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            </div>
 
-                <label class="block">
-                  <input
-                    type="text"
-                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                    placeholder="Age"
-                  />
-                </label>
+            <div class="mt-4">
+                <x-label for="email" value="{{ __('Email') }}" />
+                <x-input id="email" class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            </div>
 
-                <label class="block">
-                  <input
-                    type="email"
-                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                    placeholder="Email Address"
-                  />
-                </label>
+            <div class="mt-4">
+                <x-label for="password" value="{{ __('Password') }}" />
+                <x-input id="password" class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]" type="password" name="password" required autocomplete="new-password" />
+            </div>
 
-                <label class="block">
-                  <input
-                    type="password"
-                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                    placeholder="Password"
-                  />
-                </label>
-                
-                <div class="mt-10 grid gap-6">
-                  <a href="sign-up-success.html"
+            <div class="mt-4">
+                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-input id="password_confirmation" class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                <div class="mt-4">
+                    <x-label for="terms">
+                        <div class="flex items-center">
+                            <x-checkbox name="terms" id="terms" required />
+
+                            <div class="ms-2">
+                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
+                                ]) !!}
+                            </div>
+                        </div>
+                    </x-label>
+                </div>
+            @endif
+
+            <div class="mt-10 grid gap-6">
+                  <button type="submit" 
                     class="text-center text-white text-lg font-medium bg-[#0D63F3] px-10 py-4 rounded-full"
                   >
                     Continue
-                  </a>
+                  </button>
                   <a
-                    href="sign-in.html"
+                    href="{{ route('login') }}"
                     class="text-center text-lg text-[#1E2B4F] font-medium bg-[#F2F6FE] px-10 py-4 rounded-full"
                   >
                     Sign In
                   </a>
-                </div>
-              </form>
+            </div>
+        </form>
 
             </div>
           </div>
@@ -120,6 +127,6 @@
         </div>
         <!-- End Qoute -->
       </div>
-    </div>
+</div>
 
 @endsection
