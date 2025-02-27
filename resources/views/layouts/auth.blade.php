@@ -16,6 +16,12 @@
 
     </head>
         <body>
+
+            {{-- include sweet alert start --}}
+            @include('sweetalert::alert')
+            {{-- include sweet alert end --}}
+
+
             {{-- include header start --}}
             {{-- @include('components.frontsite.header') --}}
             {{-- include header end --}}
