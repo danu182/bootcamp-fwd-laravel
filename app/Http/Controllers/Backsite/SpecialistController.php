@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backsite;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Specialist\SpecialistStoreRequest;
 use App\Http\Requests\Specialist\SpecialistUpdateRequest;
 use App\Models\MasterData\Specialist;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class SpecialistController extends Controller
 {
@@ -16,8 +16,8 @@ class SpecialistController extends Controller
     public function index()
     {
         $specialist=Specialist::orderBy('id','desc')->get();
-        // return $specialist;
-        return view('pages\backsite.master-data.specialist.index', compact('specialist'));
+        return $specialist;
+        return view('pages.backsite.master-data.specialist.index', compact('specialist'));
     }
 
     /**
@@ -31,15 +31,12 @@ class SpecialistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SpecialistStoreRequest $request)
+    public function store(SpecialistStoreRequest $request, Specialist $specialist)
     {
-        $data= $request->id;
-
+        $data = $request->all();
         $specialist= Specialist::create($data);
-
         alert()->success('Ssuccess Message', 'Successfully added new Specialist');
         return redirect()->route('backsite.specialist.index');
-
     }
 
     /**
@@ -54,9 +51,9 @@ class SpecialistController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Specialist $specialist)
+    public function edit(string $id)
     {
-        return $specialist;
+        //
     }
 
     /**
@@ -73,6 +70,6 @@ class SpecialistController extends Controller
      */
     public function destroy(Specialist $specialist)
     {
-        //
+        $specialist->delete();
     }
 }

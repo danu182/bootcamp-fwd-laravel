@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Backsite\DashboardController;
+use App\Http\Controllers\Backsite\SpecialistController as BacksiteSpecialistController;
 use App\Http\Controllers\Backsite\TypeUserController;
 use App\Http\Controllers\Frontsite\AppointmentController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
-use App\Http\Controllers\SpecialistController;
 use Illuminate\Support\Facades\Route;
 
 // route default laravel 
@@ -59,7 +59,7 @@ Route::group(['prefix'=>'backsite', 'as'=>'backsite.','middleware'=>['auth:sanct
     Route::resource('type_user', TypeUserController::class );
     
     // Specialist
-    Route::resource('specialist', SpecialistController::class );
+    Route::resource('specialist', BacksiteSpecialistController::class );
 
 
 });
