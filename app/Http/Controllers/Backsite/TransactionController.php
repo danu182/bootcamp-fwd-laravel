@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Frontsite;
+namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-use App\Models\Operational\Appointment;
 use Illuminate\Http\Request;
 
-class AppointmentController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $appointment= Appointment::orderBy('created_at', 'desc')->get();
-        return view('pages.frontsite.appointment.index', compact('appointment'));
+        //
     }
 
     /**
@@ -22,7 +20,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return abort(404);
+        //
     }
 
     /**
@@ -30,7 +28,7 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        return abort(404);
+        //
     }
 
     /**
@@ -38,7 +36,7 @@ class AppointmentController extends Controller
      */
     public function show(string $id)
     {
-        return abort(404);
+        //
     }
 
     /**
@@ -46,7 +44,7 @@ class AppointmentController extends Controller
      */
     public function edit(string $id)
     {
-        return abort(404);
+        //
     }
 
     /**
@@ -54,7 +52,7 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return abort(404);
+        //
     }
 
     /**
@@ -62,6 +60,6 @@ class AppointmentController extends Controller
      */
     public function destroy(string $id)
     {
-        return abort(404);
+        //
     }
 }

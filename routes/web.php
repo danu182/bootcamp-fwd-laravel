@@ -1,8 +1,15 @@
 <?php
 
+use App\Http\Controllers\Backsite\ConfigPaymentController;
+use App\Http\Controllers\Backsite\ConsultationController;
 use App\Http\Controllers\Backsite\DashboardController;
+use App\Http\Controllers\Backsite\HospitalPatientController;
+use App\Http\Controllers\Backsite\PermissionController;
+use App\Http\Controllers\Backsite\RoleController;
 use App\Http\Controllers\Backsite\SpecialistController as BacksiteSpecialistController;
+use App\Http\Controllers\Backsite\TransactionController;
 use App\Http\Controllers\Backsite\TypeUserController;
+use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Frontsite\AppointmentController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
@@ -60,7 +67,24 @@ Route::group(['prefix'=>'backsite', 'as'=>'backsite.','middleware'=>['auth:sanct
     
     // Specialist
     Route::resource('specialist', BacksiteSpecialistController::class );
+    
+    Route::resource('permission', PermissionController::class );
 
+
+    Route::resource('role', RoleController::class );
+    
+    Route::resource('user', UserController::class );
+    
+    Route::resource('consultation', ConsultationController::class );
+    
+    Route::resource('config_payment', ConfigPaymentController::class );
+    
+    Route::resource('hospital_patient', HospitalPatientController::class );
+    
+    
+    Route::resource('appointment', AppointmentController::class );
+    
+    Route::resource('transaction', TransactionController::class );
 
 });
 

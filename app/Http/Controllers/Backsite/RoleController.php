@@ -66,14 +66,21 @@ class RoleController extends Controller
     {
         $role->update($request->all());
         $role->permission()->sync($request->input('permission',[]));
+        
+        alert()->success('Success Massage', 'Successfully update role');
+        return redirect()->route('backsite.role.index');
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Role $role)
     {
-        //
+        $role->forceDelete();
+
+        alert()->success('success Massage','Successfully removed role');
+        // return redirect()->route('backsite.role.index');
+        return back();
     }
 }
