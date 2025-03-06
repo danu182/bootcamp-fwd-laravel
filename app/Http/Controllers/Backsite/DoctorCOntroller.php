@@ -8,6 +8,8 @@ use App\Http\Requests\Doctor\DoctorUpdateRequest;
 use App\Models\MasterData\Specialist;
 use App\Models\Operational\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class DoctorCOntroller extends Controller
 {
@@ -48,6 +50,8 @@ class DoctorCOntroller extends Controller
      */
     public function show(Doctor $doctor)
     {
+        abort_if(Gate::denies('doctor_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('pages.backsite.operational.doctor.show', compact('doctor'));
     }
 
@@ -56,6 +60,7 @@ class DoctorCOntroller extends Controller
      */
     public function edit(Doctor $doctor)
     {
+        abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $specialist= Specialist::orderBy('nmae', 'asc')->get();
 
         return view('pages.backsite.operational.doctor.edit', compact('doctor','specialist'));
@@ -79,6 +84,7 @@ class DoctorCOntroller extends Controller
      */
     public function destroy(Doctor $doctor)
     {
+        abort_if(Gate::denies('doctor_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $doctor->delete();
 
         alert()->success('Success Message','Successfully deleted doctor');
