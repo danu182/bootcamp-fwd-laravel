@@ -31,13 +31,16 @@ class PermissionRole extends Model
     ];
 
     
+     // one to many
     public function permission()
     {
-        return $this->belongsTo(Permission::class, 'permission_id', 'id');
+        // 3 parameter (path model, field foreign key, field primary key from table hasMany/hasOne)
+        return $this->belongsTo('App\Models\ManagementAccess\Permission', 'permission_id', 'id');
     }
 
     public function role()
     {
-        return $this->belongsTo(Role::class, 'role_id', 'id');
+        // 3 parameter (path model, field foreign key, field primary key from table hasMany/hasOne)
+        return $this->belongsTo('App\Models\ManagementAccess\Role', 'role_id', 'id');
     }
 }

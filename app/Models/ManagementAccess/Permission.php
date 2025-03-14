@@ -28,13 +28,16 @@ class Permission extends Model
     ];
 
 
-    /**
-     * Get all of the comments for the Permission
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+      // many to many
+    public function role()
+    {
+        return $this->belongsToMany('App\Models\ManagementAccess\Role');
+    }
+
+    // one to many
     public function permission_role()
     {
-        return $this->hasMany(PermissionRole::class, 'permission_id', 'id');
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany('App\Models\ManagementAccess\PermissionRole', 'permission_id');
     }
 }

@@ -8,6 +8,9 @@ use App\Http\Requests\Role\RoleUpdateRequest;
 use App\Models\ManagementAccess\Permission;
 use App\Models\ManagementAccess\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class RoleController extends Controller
 {
@@ -16,8 +19,9 @@ class RoleController extends Controller
      */
     public function index(Role $role)
     {
+        // abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $role= Role::orderBy('created_at', 'desc')->get();
-        return view('pages.backsite.master-data.role.index', compact('role'));
+        return view('pages.backsite.management-access.role.index', compact('role'));
     }
 
     /**
@@ -44,7 +48,7 @@ class RoleController extends Controller
     {
         $role->load('permission');
 
-        return view('pages.backsite.master-data.role.show', compact('role'));
+        return view('pages.backsite.management-access.role.show', compact('role'));
     }
 
     /**
@@ -55,7 +59,7 @@ class RoleController extends Controller
         $permission=Permission::all();
         $role->load('permissions');
 
-        return view('pages.backsite.master-data.role.edit', compact('role', 'permission'));
+        return view('pages.backsite.management-access.role.edit', compact('role', 'permission'));
 
     }
 

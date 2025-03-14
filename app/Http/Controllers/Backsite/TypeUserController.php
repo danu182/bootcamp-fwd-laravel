@@ -14,9 +14,9 @@ class TypeUserController extends Controller
     public function index()
     {
         $type_user= TypeUser::all();
-        dd ($type_user);
+        // dd ($type_user);
 
-        return view('pages.backsite.management-access.user-type.index');
+        return view('pages.backsite.management-access.type-user.index', compact('type_user'));
     }
     /**
      * Show the form for creating a new resource.

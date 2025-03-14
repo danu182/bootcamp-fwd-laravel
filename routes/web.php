@@ -62,13 +62,15 @@ Route::group(['prefix'=>'backsite', 'as'=>'backsite.','middleware'=>['auth:sanct
     // dashboard
     Route::resource('dashboard', DashboardController::class );
     
+    // permission
+    Route::resource('permission', PermissionController::class );
+
     // type user
     Route::resource('type_user', TypeUserController::class );
     
     // Specialist
     Route::resource('specialist', BacksiteSpecialistController::class );
     
-    Route::resource('permission', PermissionController::class );
 
 
     Route::resource('role', RoleController::class );

@@ -30,25 +30,29 @@ class Role extends Model
     ];
 
 
-    public function usee()
+     // many to many
+    // many to many
+    public function user()
     {
-        return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
+        return $this->belongsToMany(User::class);
     }
 
-    public function permission() 
+    public function permission()
     {
-        return $this->belongsToMany(Permission::class, 'permission_role', 'role_id', 'permission_id');
+        return $this->belongsToMany('App\Models\ManagementAccess\Permission');
+    }
+
+    // one to many
+    public function role_user()
+    {
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany('App\Models\ManagementAccess\RoleUser', 'role_id');
     }
 
     public function permission_role()
     {
-        return $this->hasMany(PermissionRole::class, 'role_id', 'id');
-    }
-
-    
-    public function role_user()
-    {
-        return $this->hasMany(RoleUser::class, 'role_id', 'id');
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany('App\Models\ManagementAccess\PermissionRole', 'role_id');
     }
 
     

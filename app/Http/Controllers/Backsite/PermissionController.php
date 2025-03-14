@@ -7,6 +7,7 @@ use App\Models\ManagementAccess\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
+// use App\Http\Middleware\AuthGates;
 
 class PermissionController extends Controller
 {
@@ -15,12 +16,24 @@ class PermissionController extends Controller
      */
     public function index(Permission $permission)
     {
-        // abort_if(Gate::denies('permission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $permission=Permission::orderBy('id','asc')->get();
+
+        $permission =Permission::all();
+        // return $permission;
+        // abort_if(Gate::denies('permission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
-        return view('pages.backsite.management-access.permission.index', compact('permission'));
+        // $permission=Permission::orderBy('id','asc')->get();
+        
+        // return view('pages.backsite.management-access.permission.index', compact('permission'));
         // dd($permission);
+
+        // if (Gate::allows('permission_access')) {
+            return view('pages.backsite.management-access.permission.index', compact('permission'));
+        // }
+
+        // Pengguna tidak diizinkan
+        // abort(Response::HTTP_FORBIDDEN, '403 Forbidden');
+
     }
 
     /**
