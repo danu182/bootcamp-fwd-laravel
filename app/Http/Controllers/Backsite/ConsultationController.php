@@ -16,7 +16,7 @@ class ConsultationController extends Controller
     public function index()
     {
         $consultation=Consultation::orderBy('created_at', 'DESC')->get();
-        return view('pages.backsite.consultation.index', compact('consultation'));
+        return view('pages.backsite.master-data.consultation.index', compact('consultation'));
     }
 
     /**
@@ -64,6 +64,7 @@ class ConsultationController extends Controller
         $data = $request->all();
         $consultation->update($data);
         alert()->success('Success message', 'Successfully updated consultation');
+        return redirect()->route('backsite.consultation.index');
     }
 
     /**

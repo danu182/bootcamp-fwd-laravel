@@ -4,7 +4,7 @@ namespace App\Http\Requests\ConfigPayment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ConfigPaymentUpdateRequest extends FormRequest
+class   ConfigPaymentUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,15 +19,20 @@ class ConfigPaymentUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
+        // return [
+        //     'fee'=>[
+        //         'required','string','max:255',
+        //     ],
+        //     'vat'=>[
+        //         'required','string','max:255',
+        //     ],
+        // ];
+    
         return [
-            'fee'=>[
-                'required','string','max:255',
-            ],
-            'vat'=>[
-                'required','string','max:255',
-            ],
+            'fee' => 'required|string|max:255',
+            'vat' => 'required|string|max:255',
         ];
     }
 }

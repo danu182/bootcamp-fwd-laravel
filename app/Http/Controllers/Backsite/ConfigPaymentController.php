@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backsite\Configpayment\TestConfigPaymentUptdate;
 use App\Http\Requests\ConfigPayment\ConfigPaymentUpdateRequest;
 use App\Models\MasterData\ConfigPayment;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ConfigPaymentController extends Controller
     {
         $config_payments = ConfigPayment::all();
 
-        return view('pages.backsite.config_payment.index', compact('config_payments'));
+        return view('pages.backsite.master-data.config-payment.index', compact('config_payments'));
     }
 
     /**
@@ -50,7 +51,7 @@ class ConfigPaymentController extends Controller
      */
     public function edit(ConfigPayment $config_payment)
     {
-        return view('pages.backsite.config_payment.edit', compact('config_payment'));
+        return view('pages.backsite.master-data.config-payment.edit', compact('config_payment'));
     }
 
     /**
@@ -58,11 +59,22 @@ class ConfigPaymentController extends Controller
      */
     public function update(ConfigPaymentUpdateRequest $request, ConfigPayment $config_payment)
     {
-        $data= $request->all();
 
+        // get all request from frontsite
+        $data = $request->all();
+
+       // re format before push to table
+        $data['fee'] = str_replace(',', '', $data['fee']);
+        $data['fee'] = str_replace('IDR ', '', $data['fee']);
+        $data['vat'] = str_replace(',', '', $data['vat']);
+
+        // return $data;
+
+        // update to database
         $config_payment->update($data);
 
-        alert()->success('Success Message',"Successfully updated config Payment");
+        alert()->success('Success Message', 'Successfully updated config payment');
+        return redirect()->route('backsite.config_payment.index');
         
     }
 

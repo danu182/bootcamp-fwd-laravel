@@ -16,7 +16,7 @@ class SpecialistController extends Controller
     public function index()
     {
         $specialist=Specialist::orderBy('id','desc')->get();
-        return $specialist;
+        
         return view('pages.backsite.master-data.specialist.index', compact('specialist'));
     }
 

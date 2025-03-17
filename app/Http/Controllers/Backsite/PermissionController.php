@@ -41,7 +41,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -49,8 +49,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request, Permission $permission)
     {
-        $data=$request->all();
-        $permission=Permission::create($data);
+        return abort(404);
     }
 
     /**
@@ -58,7 +57,7 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        return $permission;
+        return abort(404);
     }
 
     /**
@@ -66,7 +65,7 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        return $permission;
+        return abort(404);
     }
 
     /**
@@ -74,7 +73,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        $permission->update($request->all());   
+        return abort(404);
     }
 
     /**
@@ -82,6 +81,6 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        $permission->delete();
+        return abort(404);
     }
 }

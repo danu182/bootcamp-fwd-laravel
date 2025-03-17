@@ -71,7 +71,8 @@ Route::group(['prefix'=>'backsite', 'as'=>'backsite.','middleware'=>['auth:sanct
     // Specialist
     Route::resource('specialist', BacksiteSpecialistController::class );
     
-
+    // config payment
+    Route::resource('config_payment', ConfigPaymentController::class);
 
     Route::resource('role', RoleController::class );
     
