@@ -34,8 +34,15 @@ class SpecialistController extends Controller
     public function store(SpecialistStoreRequest $request, Specialist $specialist)
     {
         $data = $request->all();
+
+         // re format before push to table
+        $data['price'] = str_replace(',', '', $data['price']);
+        $data['price'] = str_replace('IDR ', '', $data['price']);
+
+        // wtore data
         $specialist= Specialist::create($data);
-        alert()->success('Ssuccess Message', 'Successfully added new Specialist');
+
+        alert()->success('Success Message', 'Successfully added new Specialist');
         return redirect()->route('backsite.specialist.index');
     }
 
@@ -44,16 +51,16 @@ class SpecialistController extends Controller
      */
     public function show(Specialist $specialist)
     {
-        return $specialist;
+        // return $specialist;
         return view('pages.backsite.master-data.specialist.show', compact('specialist'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Specialist $specialist)
     {
-        //
+        return view('pages.backsite.master-data.specialist.edit', compact('specialist'));
     }
 
     /**
@@ -62,7 +69,17 @@ class SpecialistController extends Controller
     public function update(SpecialistUpdateRequest $request, Specialist $specialist)
     {
         $data= $request->all(); 
+
+        // re format before push to table
+        $data['price'] = str_replace(',', '', $data['price']);
+        $data['price'] = str_replace('IDR ', '', $data['price']);
+
         $specialist->update($data);
+
+        // return $specialist;
+
+        alert()->success('Success Message', 'Successfully update Specialist');
+        return redirect()->route('backsite.specialist.index');
     }
 
     /**
@@ -71,5 +88,9 @@ class SpecialistController extends Controller
     public function destroy(Specialist $specialist)
     {
         $specialist->delete();
+
+        alert()->success('Success Message', 'Successfully deleted specialist');
+
+        return back();
     }
 }

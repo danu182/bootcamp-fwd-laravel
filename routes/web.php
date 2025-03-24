@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backsite\ConfigPaymentController;
 use App\Http\Controllers\Backsite\ConsultationController;
 use App\Http\Controllers\Backsite\DashboardController;
+use App\Http\Controllers\Backsite\DoctorCOntroller;
 use App\Http\Controllers\Backsite\HospitalPatientController;
 use App\Http\Controllers\Backsite\PermissionController;
 use App\Http\Controllers\Backsite\RoleController;
@@ -74,9 +75,15 @@ Route::group(['prefix'=>'backsite', 'as'=>'backsite.','middleware'=>['auth:sanct
     // config payment
     Route::resource('config_payment', ConfigPaymentController::class);
 
+    // role
     Route::resource('role', RoleController::class );
     
+    // user
     Route::resource('user', UserController::class );
+    
+    // doctor
+    Route::resource('doctor', DoctorCOntroller::class );
+
     
     Route::resource('consultation', ConsultationController::class );
     

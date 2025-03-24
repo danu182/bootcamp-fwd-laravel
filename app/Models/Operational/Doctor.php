@@ -31,12 +31,15 @@ class Doctor extends Model
         'updated_at',
         'deleted_at',
     ];
-
-    public function specialist()
-    {
-           // 3 parameter (path model, filed foregn key di tabel asal, field primary key dari tabel tujuan )
-        return $this->belongsTo(Specialist::class, 'spesialist_id', 'id');
-    }
+/**
+ * Get the user that owns the Doctor
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+ */
+public function specialist()
+{
+    return $this->belongsTo(Specialist::class, 'specialist_id', 'id');
+}
 
     
     public function appointment()

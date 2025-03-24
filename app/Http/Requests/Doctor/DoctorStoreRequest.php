@@ -13,7 +13,7 @@ class DoctorStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        abort_if(Gate::denies('doctor_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('doctor_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return true;
     }
 
@@ -25,17 +25,17 @@ class DoctorStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'specialist'=>[
-                'required|exists:specialist,id','integer',
+            'specialist_id' => [
+                'required', 'integer',
             ],
-            'title'=>[
-                'required','string','max:255',
+            'name' => [
+                'required', 'string', 'max:255',
             ],
-            'fee'=>[
-                'required','string','max:255',
+            'fee' => [
+                'required', 'string', 'max:255',    
             ],
-            'photo'=>[
-                'nullable','string','max:100000','mimes:jpeg,svg,png',
+            'photo' => [
+                'nullable', 'mimes:jpeg,svg,png', 'max:10000',
             ],
         ];
     }
