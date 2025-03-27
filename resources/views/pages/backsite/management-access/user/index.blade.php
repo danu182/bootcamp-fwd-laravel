@@ -42,7 +42,7 @@
             </div>
 
             {{-- add card --}}
-            {{-- @can --}}('user_create')
+            {{-- @can('user_create') --}}
                 <div class="content-body">
                     <section id="add-home">
                         <div class="row">
@@ -199,9 +199,16 @@
                                                                 <td>{{ $user_item->name ?? '' }}</td>
                                                                 <td>{{ $user_item->email ?? '' }}</td>
                                                                 <td style="width:200px;">
-                                                                    @foreach($user_item->role as $key => $item)
+                                                                    {{-- @foreach($user_item->role as $key => $item)
+                                                                        
+                                                                    @endforeach --}}
+
+                                                                    @forelse($user_item->role as $key => $item)
                                                                         <span class="badge bg-yellow text-dark mr-1 mb-1">{{ $item->title }}</span>
-                                                                    @endforeach
+                                                                    @empty
+                                                                        <span class="badge bg-yellow text-dark mr-1 mb-1">kosong</span>
+                                                                    @endforelse
+
                                                                 </td>
                                                                 <td style="width:200px;">
                                                                     <span class="badge bg-success mr-1 mb-1">{{ $user_item->detail_user->type_user->name ?? '' }}</span>
@@ -211,7 +218,7 @@
                                                                     <div class="btn-group mr-1 mb-1">
                                                                         <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
                                                                         <div class="dropdown-menu">
-                                                                            {{-- @can --}}('user_show')
+                                                                            {{-- @can('user_show') --}}
                                                                                 <a href="#mymodal"
                                                                                     data-remote="{{ route('backsite.user.show', $user_item->id) }}"
                                                                                     data-toggle="modal"
@@ -221,12 +228,12 @@
                                                                                     Show
                                                                                 </a>
                                                                             {{-- @endcan --}}
-                                                                            {{-- @can --}}('user_edit')
+                                                                            {{-- @can('user_edit') --}}
                                                                                 <a class="dropdown-item" href="{{ route('backsite.user.edit', $user_item->id) }}">
                                                                                     Edit
                                                                                 </a>
                                                                             {{-- @endcan --}}
-                                                                            {{-- @can --}}('user_delete')
+                                                                            {{-- @can('user_delete') --}}
                                                                                 <form action="{{ route('backsite.user.destroy', $user_item->id) }}" method="POST" onsubmit="return confirm('Are you sure want to delete this data ?');">
                                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -35,9 +35,9 @@ class UserUpdateRequest extends FormRequest
                 'email','max:255', Rule::unique('users')->ignore($this->user),
                 // Role unique only works for other record id 
             ],
-            'password'=> [
-               'required','string','min:8','max:255',
-            ],
+            // 'password'=> [
+            //    'required','string','min:8','max:255',
+            // ],
         ];
     }
 }

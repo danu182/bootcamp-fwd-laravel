@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\ManagementAccess\DetailUser;
+use App\Models\ManagementAccess\Role;
 use App\Models\ManagementAccess\RoleUser;
 use App\Models\Operational\Appointment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -74,27 +75,30 @@ class User extends Authenticatable
 
 
 
-    public function appointment()
+ // many to many --- //
+    public function role()
     {
-        return $this->hasMany(Appointment::class, 'user_id', 'local_key');
+        return $this->belongsToMany('App\Models\ManagementAccess\Role');
     }
 
-    public function detailUser()
+    // one to many
+    public function appointment()
     {
-        return $this->hasOne(DetailUser::class, 'user_id', 'id');
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany(Appointment::class, 'user_id');
+    }
+
+    public function detail_user()
+    {
+        // 2 parameter (path model, field foreign key)
+        return $this->hasOne(DetailUser::class, 'user_id');
     }
 
     public function role_user()
     {
-        return $this->hasMany(RoleUser::class, 'user_id', 'id');
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany(RoleUser::class, 'user_id');
     }
-
-    public function role()
-    {
-        return $this->belongsTo(User::class, 'role_id', 'id');
-    }
-
-    
 
 
 
